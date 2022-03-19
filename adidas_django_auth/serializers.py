@@ -8,14 +8,14 @@ from rest_framework.authtoken.models import Token
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'first_name', 'last_name', 'dob', 'role', 'dob', 'nationality', 'gender']
+        fields = ['id', 'first_name', 'last_name', 'role', 'nationality', 'gender']
 
 
 class UserPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
-            'first_name', 'last_name', 'username', 'email', 'password', 'gender', 'role', 'dob', 'nationality')
+            'first_name', 'last_name', 'username', 'email', 'password', 'gender', 'role', 'nationality')
 
     def create(self, validated_data):
         """

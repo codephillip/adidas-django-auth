@@ -25,7 +25,6 @@ class User(AbstractUser):
     id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
     role = models.CharField(max_length=9, choices=ROLE_CHOICES,
                             null=True, blank=True, default=CUSTOMER)
-    dob = models.DateField(null=True, blank=True)
     nationality = models.CharField(max_length=255, null=True, blank=True)
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES, null=True, blank=True)
 
