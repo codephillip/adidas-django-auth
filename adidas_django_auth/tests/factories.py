@@ -15,6 +15,5 @@ class UserFactory(DjangoModelFactory):
         model = User
 
     role = fuzzy.FuzzyChoice(User.ROLE_CHOICES, getter=lambda c: c[0])
-    dob = LazyFunction(faker.date)
     nationality = LazyAttribute(lambda o: faker.text(max_nb_chars=255))
     gender = fuzzy.FuzzyChoice(User.GENDER_CHOICES, getter=lambda c: c[0])

@@ -23,6 +23,5 @@ class UserSerializer_Test(TestCase):
 
         assert serialized_user['id'] == str(user.id)
         assert serialized_user['role'] == user.role
-        assert serialized_user['dob'] == user.dob
         assert serialized_user['nationality'] == user.nationality
         assert serialized_user['gender'] == user.gender

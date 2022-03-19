@@ -34,7 +34,6 @@ class User_Test(TestCase):
         user = User.objects.get(pk=created_user_pk)
 
         assert user_dict['role'] == user.role
-        assert user_dict['dob'] == str(user.dob)
         assert user_dict['nationality'] == user.nationality
         assert user_dict['gender'] == user.gender
 
@@ -81,21 +80,8 @@ class User_Test(TestCase):
         assert response.status_code == status.HTTP_200_OK
 
         assert user_dict['role'] == response.data['role']
-        assert user_dict['dob'] == response.data['dob']
         assert user_dict['nationality'] == response.data['nationality']
         assert user_dict['gender'] == response.data['gender']
-
-    def test_update_dob_with_incorrect_value_data_type(self):
-        client = self.api_client
-        user = User.objects.first()
-        user_detail_url = reverse('user-detail', kwargs={'pk': user.pk})
-        user_dob = user.dob
-        data = {
-            'dob': faker.pystr(),
-        }
-        response = client.patch(user_detail_url, data=data)
-        assert response.status_code == status.HTTP_400_BAD_REQUEST
-        assert user_dob == User.objects.first().dob
 
     def test_update_role_with_incorrect_value_outside_constraints(self):
         client = self.api_client
